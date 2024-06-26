@@ -55,12 +55,11 @@ const citiesListArr = [
     ['Шанхай' , 'Пекин' , 'Шенгжень'],
 ]
 
-function showRegistrationForm() {
 
-}
 let country = document.querySelector('#country')
 let countryText
 let cities = document.querySelector('#cities')
+let citiesText
 function collectFormData(e) {
     e.preventDefault(e);
     let firstName = document.querySelector('#firstName').value
@@ -87,6 +86,46 @@ function collectFormData(e) {
         }
     }
     )
+
+    let result = document.querySelector('#result')
+    result.innerHTML = `
+            <p>result</p>
+        <table class="w-100">
+          <tr>
+            <td>Имя</td>
+            <td>${firstName}</td>
+          </tr>
+          <tr>
+            <td>Фамилия</td>
+            <td>${lastName}</td>
+          </tr>
+          <tr>
+            <td>Дата рождения</td>
+            <td>${date}</td>
+          </tr>
+          <tr>
+            <td>Пол</td>
+            <td>${getder}</td>
+          </tr>
+          <tr>
+            <td>Страна</td>
+            <td>${countryText}</td>
+          </tr>
+          <tr>
+            <td>Город</td>
+            <td>${citiesText}</td>
+          </tr>
+          <tr>
+            <td>Навыки</td>
+            <td>${skillsUser}</td>
+          </tr>
+        </table>
+      </div>
+    
+    `
+
+
+
 }
 
 function onChange() {
@@ -146,7 +185,16 @@ function onChange() {
 country.onchange = onChange;
 onChange();
 
+
+function onChange1() {
+    citiesText = cities.options[cities.selectedIndex].text;
+}
+cities.onchange = onChange1;
+onChange1();
+
 saveBtn.addEventListener('click', collectFormData)
-
-
+// нужно еще допиливать мелкие проверки на пустые строки и пр. но само построение ясно. В HTML не все впорядке со вложенностью блоков по Бутстрапу . не успел допилить 
 /////////////////////////////////////////////////////////////////////////
+
+
+// дальше уже не хватило времени. 
